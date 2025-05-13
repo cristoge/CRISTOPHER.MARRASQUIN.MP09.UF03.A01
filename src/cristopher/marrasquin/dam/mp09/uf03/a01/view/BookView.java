@@ -6,7 +6,7 @@ public class BookView {
 
 	public Book getBook() {
 		
-		System.out.println("Demanant dades de la persona ...");
+		System.out.println("Introdueix les dades del llibre...");
 		Book b = new Book();
 
 		Scanner scanner = new Scanner(System.in);

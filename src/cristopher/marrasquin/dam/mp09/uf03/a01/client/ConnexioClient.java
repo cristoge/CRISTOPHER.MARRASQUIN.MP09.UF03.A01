@@ -21,8 +21,12 @@ public class ConnexioClient {
 		clientSocket = new Socket(Settings.IP, Settings.PORT);
 
 		// =============================
-		System.out.println("C: Esperant la transmissió del servidor ...");
+		System.out.println("C: Obrint streams ...");
+		objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
 		objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+
+		// =============================
+		System.out.println("C: Esperant la transmissió del servidor ...");
 		Book bookRebutServidor = (Book) objectInputStream.readObject();
 		System.out.println("C: Hem rebut del servidor: " + bookRebutServidor.toString());
 
@@ -31,7 +35,6 @@ public class ConnexioClient {
 		BookView bookView = new BookView();
 		Book bookClient = bookView.getBook();
 		System.out.println("C: Transmeterem aquest llibre: " + bookClient.toString());
-		objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
 		objectOutputStream.writeObject(bookClient);
 
 		// =============================
